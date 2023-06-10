@@ -41,16 +41,17 @@ public class InputReader : MonoBehaviour
 
     private void MoveCube()
     {
-        var tiltInput = Input.acceleration.x;
-        if(tiltInput < 0)
+        if(Input.GetMouseButton(0))
         {
-           ColorCubeHolder.Translate(Vector3.right * -m_moveSpeed * Time.deltaTime);
-        }
-        else if(tiltInput > 0)
-        {
-            ColorCubeHolder.Translate(Vector3.right * m_moveSpeed * Time.deltaTime);
+            if(Input.mousePosition.x < Screen.width/2) 
+            {
+                ColorCubeHolder.Translate(Vector3.left * m_moveSpeed * Time.deltaTime);
+            }
+            else if(Input.mousePosition.x > Screen.width/2)
+            {
+                ColorCubeHolder.Translate(Vector3.right * m_moveSpeed * Time.deltaTime);
 
-
+            }
         }
     }
 
