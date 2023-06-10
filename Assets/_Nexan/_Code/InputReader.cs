@@ -18,7 +18,7 @@ public class InputReader : MonoBehaviour
     public float upSwipThreshold, downSwipThreshold;
     public float lerpAmount;
     public float m_moveSpeed;
-   
+    public LayerMask m_Zbox;
 
     public RotationState rotationState;
     public Transform ColorCubeTransform;
@@ -35,7 +35,7 @@ public class InputReader : MonoBehaviour
     private void Update()
     {
         MoveCube();
-        RotateCube();
+        //RotateCube();
         HandleRotationStates();
     }
 
@@ -43,13 +43,10 @@ public class InputReader : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            if(Input.mousePosition.x < Screen.width/2) 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(ray,out RaycastHit hitInfo, 100f, m_Zbox))
             {
-                ColorCubeHolder.Translate(Vector3.left * m_moveSpeed * Time.deltaTime);
-            }
-            else if(Input.mousePosition.x > Screen.width/2)
-            {
-                ColorCubeHolder.Translate(Vector3.right * m_moveSpeed * Time.deltaTime);
+              ColorCubeHolder.transform.position = new Vector3(hitInfo.point.x,ColorCubeHolder.transform.position.y,ColorCubeHolder.transform.position.z);  
 
             }
         }
@@ -63,7 +60,7 @@ public class InputReader : MonoBehaviour
             case RotationState.RIGHT:
 
              
-                ColorCubeTransform.rotation = Quaternion.Lerp(ColorCubeTransform.rotation, Quaternion.Euler(0, 0, currentZRot - 90), lerpAmount);
+                ColorCubeTransform.rotation = Quaternion.Lerp(ColorCubeTransform.rotation, Quaternion.Euler(0, 0, currentZRot - 90), lerpAmount * Time.deltaTime);
                 if (Mathf.Round(ColorCubeTransform.eulerAngles.z) == Mathf.Round(currentZRot - 90))
                 {
                     rotationState = RotationState.NONE;
@@ -83,7 +80,7 @@ public class InputReader : MonoBehaviour
                 {
                     currentZRot = 0;
                 }
-                ColorCubeTransform.localRotation = Quaternion.Lerp(ColorCubeTransform.localRotation, Quaternion.Euler(0, 0, currentZRot + 90), lerpAmount);
+                ColorCubeTransform.localRotation = Quaternion.Lerp(ColorCubeTransform.localRotation, Quaternion.Euler(0, 0, currentZRot + 90), lerpAmount*Time.deltaTime);
 
                 if (Mathf.Round(ColorCubeTransform.eulerAngles.z) == Mathf.Round(currentZRot + 90))
                 {

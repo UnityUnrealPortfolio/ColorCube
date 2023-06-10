@@ -7,11 +7,11 @@ public class PickupSpawner : MonoBehaviour
     public GameObject[] m_Pickups;
     public float m_LeftSpawnExtent,m_RightSpawnExtent;
     [Range(5f,15f)] public float m_minFallSpeed,m_maxFallSpeed;
-
+    public float spawnRate, spawnInterval;
 
     private void Start()
     {
-        InvokeRepeating("SpawnRandomPickups", 2f, 2f);//ToDo: magic numbers!
+        InvokeRepeating("SpawnRandomPickups", spawnInterval, spawnRate);//ToDo: magic numbers!
     }
     private void SpawnRandomPickups()
     {
