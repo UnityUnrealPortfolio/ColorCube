@@ -9,8 +9,10 @@ public class PickupSpawner : MonoBehaviour
     [Range(5f,15f)] public float m_minFallSpeed,m_maxFallSpeed;
     public float spawnRate, spawnInterval;
 
+  
     private void Start()
     {
+       
         InvokeRepeating("SpawnRandomPickups", spawnInterval, spawnRate);//ToDo: magic numbers!
     }
     private void SpawnRandomPickups()
@@ -24,6 +26,9 @@ public class PickupSpawner : MonoBehaviour
         spawnedPickup.SetActive(true);
         spawnedPickup.transform.SetPositionAndRotation(_randomSpawnVector, Quaternion.identity);
         //set a random fall speed
+        spawnedPickup.GetComponent<Rigidbody>().isKinematic = true;
         spawnedPickup.GetComponent<PickupBehaviour>().SetFallSpeed(Random.Range(m_minFallSpeed,m_maxFallSpeed));
     }
+
+
 }

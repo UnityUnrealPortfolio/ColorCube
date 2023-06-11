@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,13 @@ using UnityEngine;
 public class ColorCubeBehaviour : MonoBehaviour
 {
     [SerializeField] Animator cubeAnimator;
-
+    [SerializeField] GameObject m_DestructionFx;
     private void Start()
     {
         GameManager.Instance.OnRandomRotate += HandleRandomRotation;
     }
+
+   
 
     private void HandleRandomRotation(string _trigger)
     {
@@ -21,5 +24,13 @@ public class ColorCubeBehaviour : MonoBehaviour
     {
         GameManager.Instance.OnRandomRotate -= HandleRandomRotation;
 
+    }
+
+    internal void DestroyCube()
+    {
+        AudioManager.Instance.PlayDestructionFx();
+        Destroy(gameObject);
+        GameObject vfx = Instantiate(m_DestructionFx);
+       
     }
 }

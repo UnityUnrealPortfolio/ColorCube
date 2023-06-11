@@ -37,5 +37,15 @@ public class PoolManager : SingletonParent<PoolManager>
                 poolItemsList.Add(spawnedObj.transform);
             }
         }
+        if(poolItemsList.Count > 0)
+        {
+            foreach(var poolItem in poolItemsList)
+            {
+                if(poolItem.gameObject.activeInHierarchy == true)
+                {
+                    poolItem.gameObject.SetActive(false);   
+                }
+            }
+        }
     }
 }

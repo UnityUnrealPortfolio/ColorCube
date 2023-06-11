@@ -8,9 +8,12 @@ public class CubeColorColliderBehaviour : MonoBehaviour
     public MeshRenderer m_ColorMeterRenderer;
     public Material m_DefaultMat;
     private bool m_IsRecharging;
+    public GameObject m_DestructionFx;
+    
     private void Start()
     {
         m_ColorMeterRenderer.material = m_DefaultMat;
+        m_ColorMeter.localScale = new Vector3(1, 0.3f, 1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,28 +22,27 @@ public class CubeColorColliderBehaviour : MonoBehaviour
         {
             m_ColorMeter.localScale = new Vector3(1, m_ColorMeter.localScale.y+0.1f, 1);
             m_ColorMeterRenderer.material = other.GetComponent<MeshRenderer>().material;
-
-            if(m_ColorMeter.localScale.y >= 1f)
+            GameManager.Instance.m_Score += 10;
+            if (m_ColorMeter.localScale.y >= 1f)
             {
-                GameManager.Instance.m_Score += 10;
+                GameManager.Instance.FullBarReward += 1;
                 m_ColorMeter.localScale = new Vector3(1, 0, 1);
             }
+           other.gameObject.SetActive(false);
         }
         else if(other.gameObject.tag != gameObject.tag)
         {
             m_ColorMeter.localScale = new Vector3(1, m_ColorMeter.localScale.y - 0.1f, 1);
-        
+            m_ColorMeterRenderer.material = m_DefaultMat;
             if(m_ColorMeter.localScale.y <= 0)
             {
                 //Destroy the Cube
-                Destroy(m_ColorMeter.transform.parent.gameObject);
-                GameManager.Instance.Restart();
+               GameManager.Instance.FullBarReward -= 1;
             }
-            m_ColorMeterRenderer.material = other.GetComponent<MeshRenderer>().material;
-
+            
+            other.gameObject.GetComponent<PickupBehaviour>().BounceOff();
         }
 
-        other.gameObject.SetActive(false);
     }
 
   

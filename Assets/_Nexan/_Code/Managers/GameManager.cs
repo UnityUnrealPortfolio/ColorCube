@@ -10,23 +10,38 @@ public class GameManager : SingletonParent<GameManager>
     [SerializeField] List<String> randomRotateTriggers;
     [SerializeField] [Range(2,5)]float m_MinRotateInterval;
     [SerializeField][Range(6, 10)] float m_MaxRotateInterval;
-
+    [SerializeField] float restartDelay;
+    [SerializeField] ColorCubeBehaviour m_ColorCube;
     int m_ScoreTotal;
+    int m_FullBarReward;
     public event Action<int> OnScoreChange;
+    public event Action<int> OnFullBarRewardChange;
     public event Action<string> OnRandomRotate;
 
 
-    private void Start()
+    public int FullBarReward
     {
-        InvokeRepeating("RotateRandom", 1, UnityEngine.Random.Range( m_MinRotateInterval,m_MaxRotateInterval));//ToDo:magic numbers
+        get => m_FullBarReward;
+        set
+        {
+            m_FullBarReward = value;
+
+            if(m_FullBarReward <= 0)
+            {
+                m_ColorCube.DestroyCube();
+                Restart();
+            }
+            OnFullBarRewardChange?.Invoke(m_FullBarReward);
+        }
     }
+
     public int m_Score
     {
         get => m_ScoreTotal;
         set
         {
             m_ScoreTotal = value;
-            if(m_Score <= 0)
+            if (m_Score <= 0)
             {
                 Debug.Log("Game Over!");
             }
@@ -38,11 +53,24 @@ public class GameManager : SingletonParent<GameManager>
         }
     }
 
+    private void Start()
+    {
+        FullBarReward += 1;
+        InvokeRepeating("RotateRandom", 1, UnityEngine.Random.Range( m_MinRotateInterval,m_MaxRotateInterval));//ToDo:magic numbers
+    }
+   
+
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        StartCoroutine(RestartInSomeTime());
     }
+    private IEnumerator RestartInSomeTime()
+    {
+        yield return new WaitForSeconds(restartDelay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+    }
     private void RotateRandom()
     {
         OnRandomRotate?.Invoke(randomRotateTriggers[UnityEngine.Random.Range(0, randomRotateTriggers.Count)]);

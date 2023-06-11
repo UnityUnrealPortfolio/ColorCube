@@ -130,3 +130,5 @@ MonoBehaviour:
   m_FallSpeed: 3
   m_MaxSpinSpeed: 400
   m_MinSpinSpeed: 150
+  m_fxPrefab: {fileID: 356309226690251166, guid: 24f4e45b48c0f5d448e8e44fd694e5d5,
+    type: 3}

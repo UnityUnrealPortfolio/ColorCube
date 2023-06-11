@@ -46,12 +46,23 @@ public class InputReader : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray,out RaycastHit hitInfo, 100f, m_Zbox))
             {
-              ColorCubeHolder.transform.position = new Vector3(hitInfo.point.x,ColorCubeHolder.transform.position.y,ColorCubeHolder.transform.position.z);  
-
+               ColorCubeHolder.transform.position = new Vector3(hitInfo.point.x,ColorCubeHolder.transform.position.y,ColorCubeHolder.transform.position.z);
+                WrapAround();
             }
         }
     }
+    private void WrapAround()//ToDo:Magic Numbers
+    {
+        if (ColorCubeHolder.transform.position.x > 5)
+        {
+          ColorCubeHolder.transform.position = new Vector3(-5f, ColorCubeHolder.transform.position.y, ColorCubeHolder.transform.position.z);
+        }
+        if(ColorCubeHolder.transform.position.x < -5)
+        {
+            ColorCubeHolder.transform.position = new Vector3(5f, ColorCubeHolder.transform.position.y, ColorCubeHolder.transform.position.z);
 
+        }
+    }
     private void HandleRotationStates()
     {
         switch (rotationState)
