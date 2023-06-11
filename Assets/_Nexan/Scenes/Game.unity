@@ -1028,16 +1028,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686021377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6763b4d2476d0845a4657a4741c283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Pickups:
-  - {fileID: 8588356596503419433, guid: d579d687f900b684ea134a1a1ddb52dd, type: 3}
-  - {fileID: 4319681261326889008, guid: d43aa1fe014e2084baa43d25936df51c, type: 3}
-  - {fileID: 9196619755205802773, guid: 746ab04a017d29948a75b47488434aaf, type: 3}
-  - {fileID: 4622603992428721072, guid: 18c8b741af09d1a4fba4e5a637bc368c, type: 3}
+  m_PickupsTags:
+  - blue
+  - red
+  - green
+  - yellow
   m_LeftSpawnExtent: -4.3
   m_RightSpawnExtent: 4.3
   m_minFallSpeed: 5
@@ -1420,6 +1420,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1081093642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1081093644}
+  - component: {fileID: 1081093643}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1081093643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081093642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a9ba4a80e203d439fe6c4ac6df85a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolItems:
+  - <gameObjectToBePooled>k__BackingField: {fileID: 8588356596503419433, guid: d579d687f900b684ea134a1a1ddb52dd,
+      type: 3}
+    <countOfObjectsInPool>k__BackingField: 20
+  - <gameObjectToBePooled>k__BackingField: {fileID: 4319681261326889008, guid: d43aa1fe014e2084baa43d25936df51c,
+      type: 3}
+    <countOfObjectsInPool>k__BackingField: 20
+  - <gameObjectToBePooled>k__BackingField: {fileID: 9196619755205802773, guid: 746ab04a017d29948a75b47488434aaf,
+      type: 3}
+    <countOfObjectsInPool>k__BackingField: 20
+  - <gameObjectToBePooled>k__BackingField: {fileID: 4622603992428721072, guid: 18c8b741af09d1a4fba4e5a637bc368c,
+      type: 3}
+    <countOfObjectsInPool>k__BackingField: 20
+  poolItemsList: []
+--- !u!4 &1081093644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081093642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1200061973
 GameObject:

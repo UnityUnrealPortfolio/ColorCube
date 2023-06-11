@@ -32,6 +32,6 @@ public class CubeColorColliderBehaviour : MonoBehaviour
 
         }
 
-        Destroy(other.gameObject);
+        other.gameObject.SetActive(false);
     }
 }

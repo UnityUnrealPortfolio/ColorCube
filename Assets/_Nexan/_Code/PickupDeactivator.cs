@@ -9,7 +9,7 @@ public class PickupDeactivator : MonoBehaviour
         if(other.tag == "red" || other.tag == "blue"
             || other.tag =="green" || other.tag == "yellow")
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickupSpawner : MonoBehaviour
 {
-    public GameObject[] m_Pickups;
+    public string[] m_PickupsTags;
     public float m_LeftSpawnExtent,m_RightSpawnExtent;
     [Range(5f,15f)] public float m_minFallSpeed,m_maxFallSpeed;
     public float spawnRate, spawnInterval;
@@ -18,9 +18,11 @@ public class PickupSpawner : MonoBehaviour
         var _randomXPos = Random.Range(m_LeftSpawnExtent,m_RightSpawnExtent);
         var _randomSpawnVector = new Vector3(_randomXPos,transform.position.y,transform.position.z);
 
-        var _randomPickup = Random.Range(0,m_Pickups.Length);
+        var _randomPickup = Random.Range(0,m_PickupsTags.Length);
         GameObject spawnedPickup;
-        spawnedPickup = Instantiate(m_Pickups[_randomPickup], _randomSpawnVector, Quaternion.identity);
+        spawnedPickup = PoolManager.Instance.GetPooledItem(m_PickupsTags[_randomPickup]);
+        spawnedPickup.SetActive(true);
+        spawnedPickup.transform.SetPositionAndRotation(_randomSpawnVector, Quaternion.identity);
         //set a random fall speed
         spawnedPickup.GetComponent<PickupBehaviour>().SetFallSpeed(Random.Range(m_minFallSpeed,m_maxFallSpeed));
     }
