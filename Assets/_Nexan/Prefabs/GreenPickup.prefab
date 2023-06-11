@@ -128,3 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FallSpeed: 3
+  m_MaxSpinSpeed: 400
+  m_MinSpinSpeed: 150

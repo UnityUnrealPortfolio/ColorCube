@@ -29,6 +29,7 @@ public class CubeColorColliderBehaviour : MonoBehaviour
         else if(other.gameObject.tag != gameObject.tag)
         {
             m_ColorMeter.localScale = new Vector3(1, m_ColorMeter.localScale.y - 0.1f, 1);
+        
             if(m_ColorMeter.localScale.y <= 0)
             {
                 //Destroy the Cube

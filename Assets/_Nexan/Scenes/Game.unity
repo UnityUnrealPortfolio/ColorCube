@@ -1588,7 +1588,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1502801448}
   - component: {fileID: 1502801447}
-  - component: {fileID: 1502801449}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1609,6 +1608,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ColorMeterRechargeTime>k__BackingField: 0.1
+  randomRotateTriggers:
+  - turn1
+  - turn2
+  - turn3
+  - turn4
+  m_MinRotateInterval: 2
+  m_MaxRotateInterval: 6
 --- !u!4 &1502801448
 Transform:
   m_ObjectHideFlags: 0
@@ -1624,27 +1630,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1502801449
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502801446}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba52f1e7767ca9445988b9a12dde44ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1536190457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653359785377}
   - component: {fileID: 919132149368921884}
+  - component: {fileID: 919132149368921885}
   m_Layer: 0
   m_Name: ColorCube
   m_TagString: Untagged
@@ -2224,6 +2210,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &919132149368921885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149368921883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63311ddea5712f439a5301f3b4178f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeAnimator: {fileID: 919132149368921884}
 --- !u!4 &3745622628150009540
 Transform:
   m_ObjectHideFlags: 0
