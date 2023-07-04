@@ -254,10 +254,11 @@ public class GameManager : SingletonParent<GameManager>
     }
     private IEnumerator ReStart()
     {
+        LeaderboardsManager.Instance.AddScoreToLeaderboard(TotalScore);
         yield return new WaitForSeconds(m_RestartTime);
         OnRestart?.Invoke();
         Health = MaxHealth;
-        //send score to leader board
+        
         TotalScore = 0;
     }
 }
