@@ -109,6 +109,7 @@ public class GameManager : SingletonParent<GameManager>
         m_CubeMatArray = new Material[] { m_RedCubeMat, m_YellowCubeMat, m_GreenCubeMat, m_BlueCubeMat };
         CurrentTime = m_MaxTime;
         Health = MaxHealth;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -116,6 +117,7 @@ public class GameManager : SingletonParent<GameManager>
         DetermineCurrentColor(m_ActiveColor);
         DetermineCurrentPickUpMaterial(m_ActiveColor);
         DetermineCurrentCubeMaterial(m_ActiveColor);
+        
     }
 
     private void Update()
@@ -255,11 +257,17 @@ public class GameManager : SingletonParent<GameManager>
     private IEnumerator ReStart()
     {
         LeaderboardsManager.Instance.AddScoreToLeaderboard(TotalScore);
+        AnalyticsManager.Instance.SendScoreAtDeathEvent(TotalScore);
         yield return new WaitForSeconds(m_RestartTime);
         OnRestart?.Invoke();
         Health = MaxHealth;
         
         TotalScore = 0;
+    }
+
+    internal void SetHealthDrop(float retrievedHealthDrop)
+    {
+       m_HealthDropAmount = retrievedHealthDrop;
     }
 }
 public enum GameColors

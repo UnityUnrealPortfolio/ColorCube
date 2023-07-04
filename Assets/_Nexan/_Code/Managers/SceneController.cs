@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
    public void HandleLearnButton()
     {
+        AnalyticsManager.Instance.SendVisitHomePageEvent();
         Application.OpenURL("https://Nexan.org");
     }
 

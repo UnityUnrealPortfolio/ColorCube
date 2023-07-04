@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: '[]'
-  _rsLastCachedKeyList: '[]'
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"90d5f2ca-d0f3-4e3f-9f69-b3333f823315\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"healthdrop\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 40.0\r\n    }\r\n  }\r\n]"
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"90d5f2ca-d0f3-4e3f-9f69-b3333f823315\"\r\n   
+    },\r\n    \"rs\": {\r\n      \"key\": \"healthdrop\",\r\n      \"type\": \"float\",\r\n     
+    \"value\": 40.0\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"84c5f66c-c244-4053-9e8e-ff291b152a50\",\r\n   
     \"name\": \"production\",\r\n    \"id\": \"a15f38d4-9581-416e-ad0d-6446b51005c8\",\r\n   
     \"isDefault\": true,\r\n    \"createdAt\": \"2023-07-04T16:27:13Z\",\r\n    \"updatedAt\":

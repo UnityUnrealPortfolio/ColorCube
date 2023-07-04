@@ -41,6 +41,6 @@ public class LeaderboardsManager : SingletonParent<LeaderboardsManager>
     }
     private void HandleLeaderBoardUpdate(bool _result)
     {
-        leaderBoardDebugText.text = "Leaderboard updated successfully";
+        //leaderBoardDebugText.text = "Leaderboard updated successfully";
     }
 }

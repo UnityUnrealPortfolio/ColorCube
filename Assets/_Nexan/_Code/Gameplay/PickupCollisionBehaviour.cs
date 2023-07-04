@@ -47,5 +47,11 @@ public class PickupCollisionBehaviour : MonoBehaviour
                 GameManager.Instance.Health -= GameManager.Instance.HealthDropAmount;
             }
         }
+        if (other.gameObject.CompareTag("health"))
+        {
+            GameManager.Instance.Health += 25;
+            var healthBehaviour = other.gameObject.GetComponent<HealthPickUpBehaviour>();
+            healthBehaviour.HandleDestroy();
+        }
     }
 }

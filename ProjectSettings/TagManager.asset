@@ -11,6 +11,7 @@ TagManager:
   - cubewall
   - colorcube
   - pickup
+  - health
   layers:
   - Default
   - TransparentFX
