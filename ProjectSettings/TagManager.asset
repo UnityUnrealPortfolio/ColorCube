@@ -10,6 +10,7 @@ TagManager:
   - yellow
   - cubewall
   - colorcube
+  - pickup
   layers:
   - Default
   - TransparentFX

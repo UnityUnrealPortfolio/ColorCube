@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &343825737396740753
+--- !u!1 &5750648964945278470
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 343825737396740746}
-  - component: {fileID: 343825737396740749}
-  - component: {fileID: 343825737396740748}
-  - component: {fileID: 343825737396740751}
-  - component: {fileID: 343825737396740750}
-  - component: {fileID: 343825737396740747}
+  - component: {fileID: 5750648964945278493}
+  - component: {fileID: 5750648964945278490}
+  - component: {fileID: 5750648964945278491}
+  - component: {fileID: 5750648964945278488}
+  - component: {fileID: 5750648964945278489}
+  - component: {fileID: 5750648964945278492}
   m_Layer: 0
-  m_Name: GenericPickup
-  m_TagString: Untagged
+  m_Name: GenericMainPickup
+  m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &343825737396740746
+--- !u!4 &5750648964945278493
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343825737396740753}
+  m_GameObject: {fileID: 5750648964945278470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.61, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
@@ -36,21 +36,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &343825737396740749
+--- !u!33 &5750648964945278490
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343825737396740753}
+  m_GameObject: {fileID: 5750648964945278470}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &343825737396740748
+--- !u!23 &5750648964945278491
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343825737396740753}
+  m_GameObject: {fileID: 5750648964945278470}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,26 +86,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &343825737396740751
+--- !u!65 &5750648964945278488
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343825737396740753}
+  m_GameObject: {fileID: 5750648964945278470}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &343825737396740750
+--- !u!54 &5750648964945278489
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343825737396740753}
+  m_GameObject: {fileID: 5750648964945278470}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -115,16 +115,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &343825737396740747
+--- !u!114 &5750648964945278492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343825737396740753}
+  m_GameObject: {fileID: 5750648964945278470}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8552931c98601f42b6c074ffcdda8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CurrentColor: 0
   m_FallSpeed: 3
+  m_MaxSpinSpeed: 400
+  m_MinSpinSpeed: 150
+  m_BluefxPrefab: {fileID: 356309226690251166, guid: 24f4e45b48c0f5d448e8e44fd694e5d5,
+    type: 3}
+  m_RedfxPrefab: {fileID: 3244507744926334739, guid: bf7fada860be2814a9795b8bab851b26,
+    type: 3}
+  m_GreenFxPrefab: {fileID: 854343817136355335, guid: 1bcc196d3d4e79243b963b8f9d3b7f06,
+    type: 3}
+  m_YellowFxPrefab: {fileID: 2174542222830483433, guid: 13d406bc7382b9749b575a35c1612850,
+    type: 3}

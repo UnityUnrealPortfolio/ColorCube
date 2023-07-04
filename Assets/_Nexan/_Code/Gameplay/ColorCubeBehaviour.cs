@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class ColorCubeBehaviour : MonoBehaviour
 {
+
     [SerializeField] MeshRenderer m_Renderer;
     [SerializeField] Animator cubeAnimator;
+
+    //ToDo:serialized for testing
     private void Start()
     {
-
         GameManager.Instance.OnCubeMaterialChange += HandleActiveMaterialChange;
+       
     }
+
 
     private void HandleActiveMaterialChange(Material _mat)
     {

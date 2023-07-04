@@ -42,6 +42,18 @@ public class GameManager : SingletonParent<GameManager>
             OnTimerChange?.Invoke(m_CurrentTime);
         }
     }
+
+    int m_TotalScore;
+    public int TotalScore
+    {
+        get => m_TotalScore;
+        set
+        {
+            m_TotalScore = value;
+            
+            OnScoreChange?.Invoke(m_TotalScore);
+        }
+    }
     #endregion
 
     #region Public Events
@@ -49,9 +61,13 @@ public class GameManager : SingletonParent<GameManager>
     public event Action<Material> OnPickupMaterialChange;
     public event Action<Material> OnCubeMaterialChange;
     public event Action<Color> OnActiveColorChange;
+    public event Action<GameColors> OnGameColorsChange; 
 
     //public events for timer changes
     public event Action<float> OnTimerChange;
+
+    //public events for score changes
+    public event Action<int> OnScoreChange;
     #endregion
 
     #region Monobehaviour Callbacks
@@ -80,6 +96,27 @@ public class GameManager : SingletonParent<GameManager>
     public Material GetRandomMaterial()
     {
         return m_PickUpMatArray[UnityEngine.Random.Range(0, m_PickUpMatArray.Length)];
+    }
+
+    internal Material GetPickupMaterial(GameColors _color)
+    {
+        Material mat = null;
+        switch (_color)
+        {
+            case GameColors.BLUE:
+               mat = m_BlueMat;
+                break;
+            case GameColors.RED:
+                mat = m_RedMat;
+                break;
+            case GameColors.GREEN:
+                mat = m_GreenMat;
+                break;
+            case GameColors.YELLOW:
+                mat = m_YellowMat;
+                break;
+        }
+        return mat;
     }
     private void DetermineCurrentColor(GameColors _color)
     {
@@ -168,10 +205,12 @@ public class GameManager : SingletonParent<GameManager>
                 m_ActiveColor = GameColors.YELLOW;
                 break;
         }
+        OnGameColorsChange?.Invoke(m_ActiveColor);
         DetermineCurrentColor(m_ActiveColor);
         DetermineCurrentCubeMaterial(m_ActiveColor);
         
     }
+
 }
 public enum GameColors
 {
