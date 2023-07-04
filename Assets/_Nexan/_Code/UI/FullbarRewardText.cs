@@ -9,7 +9,7 @@ public class FullbarRewardText : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnFullBarRewardChange += HandleFullBarReward;
+        //GameManager.Instance.OnFullBarRewardChange += HandleFullBarReward;
         fullBarRewardTxt.text = "00";
     }
 

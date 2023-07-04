@@ -9,6 +9,11 @@ public class AudioManager : SingletonParent<AudioManager>
     [SerializeField] AudioClip m_RejectFX;
     [SerializeField] AudioClip m_CubeDestructionFx;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
     public void PlayPickupFX()
     {
         m_AudioSource.PlayOneShot(m_PickupFx);

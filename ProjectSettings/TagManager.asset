@@ -8,6 +8,8 @@ TagManager:
   - red
   - green
   - yellow
+  - cubewall
+  - colorcube
   layers:
   - Default
   - TransparentFX

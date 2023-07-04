@@ -10,7 +10,7 @@ public class ScoreText : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnScoreChange += HandleScoreChange;
+        //GameManager.Instance.OnScoreChange += HandleScoreChange;
         m_ScoreText.text = "00";
     }
 

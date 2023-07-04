@@ -14,7 +14,7 @@ public class SingletonParent<T> : MonoBehaviour where T : SingletonParent<T>
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (instance != null)
         {
@@ -24,6 +24,6 @@ public class SingletonParent<T> : MonoBehaviour where T : SingletonParent<T>
         {
             instance = (T)this;
         }
-        //DontDestroyOnLoad(gameObject);
+        
     }
 }

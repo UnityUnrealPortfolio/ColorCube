@@ -18,6 +18,7 @@ public class InputReader : MonoBehaviour
     public float upSwipThreshold, downSwipThreshold;
     public float lerpAmount;
     public float m_moveSpeed;
+    public float m_leftCubeLimit,m_rightCubeLimit;
     public LayerMask m_Zbox;
 
     public RotationState rotationState;
@@ -47,10 +48,25 @@ public class InputReader : MonoBehaviour
             if(Physics.Raycast(ray,out RaycastHit hitInfo, 100f, m_Zbox))
             {
                ColorCubeHolder.transform.position = new Vector3(hitInfo.point.x,ColorCubeHolder.transform.position.y,ColorCubeHolder.transform.position.z);
-                WrapAround();
+                //WrapAround();
+                LimitMove();
             }
         }
     }
+
+    private void LimitMove()
+    {
+        if (ColorCubeHolder.transform.position.x > m_rightCubeLimit)
+        {
+            ColorCubeHolder.transform.position = new Vector3(m_rightCubeLimit, ColorCubeHolder.transform.position.y, ColorCubeHolder.transform.position.z);
+        }
+        if (ColorCubeHolder.transform.position.x < m_leftCubeLimit)
+        {
+            ColorCubeHolder.transform.position = new Vector3(m_leftCubeLimit, ColorCubeHolder.transform.position.y, ColorCubeHolder.transform.position.z);
+
+        }
+    }
+
     private void WrapAround()//ToDo:Magic Numbers
     {
         if (ColorCubeHolder.transform.position.x > 5)
