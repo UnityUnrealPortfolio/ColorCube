@@ -21,6 +21,7 @@ public class GameManager : SingletonParent<GameManager>
     [SerializeField] float m_MaxTime;
     [SerializeField] float m_timeDropRate;
     [SerializeField] float m_MinDropRate, m_MaxDropRate;
+    [SerializeField] float m_RestartTime;
     #endregion
 
     #region Private Fields
@@ -43,6 +44,7 @@ public class GameManager : SingletonParent<GameManager>
         }
     }
 
+    //Score related Fields and Props
     int m_TotalScore;
     public int TotalScore
     {
@@ -50,10 +52,35 @@ public class GameManager : SingletonParent<GameManager>
         set
         {
             m_TotalScore = value;
-            
+
             OnScoreChange?.Invoke(m_TotalScore);
         }
     }
+
+    //Health related Fields and Props
+    [SerializeField] float m_MaxHealth;
+    public float MaxHealth { get => m_MaxHealth; }
+
+    [SerializeField] float m_HealthDropAmount;
+    public float HealthDropAmount { get => m_HealthDropAmount; }
+
+
+    [SerializeField] float m_Health;
+    public float Health
+    {
+        get => m_Health;
+        set
+        {
+            m_Health = value;
+            if (m_Health <= 0)
+            {
+                HandlePlayerDeath();
+            }
+            OnHealthChange?.Invoke(m_Health);
+        }
+    }
+
+
     #endregion
 
     #region Public Events
@@ -61,7 +88,11 @@ public class GameManager : SingletonParent<GameManager>
     public event Action<Material> OnPickupMaterialChange;
     public event Action<Material> OnCubeMaterialChange;
     public event Action<Color> OnActiveColorChange;
-    public event Action<GameColors> OnGameColorsChange; 
+    public event Action<GameColors> OnGameColorsChange;
+    public event Action<GameColors> OnGameStart;
+    public event Action<float> OnHealthChange;
+    public event Action OnPlayerDeath;
+    public event Action OnRestart;
 
     //public events for timer changes
     public event Action<float> OnTimerChange;
@@ -77,6 +108,7 @@ public class GameManager : SingletonParent<GameManager>
         m_PickUpMatArray = new Material[] { m_RedMat, m_GreenMat, m_BlueMat, m_YellowMat };
         m_CubeMatArray = new Material[] { m_RedCubeMat, m_YellowCubeMat, m_GreenCubeMat, m_BlueCubeMat };
         CurrentTime = m_MaxTime;
+        Health = MaxHealth;
     }
 
     private void Start()
@@ -104,7 +136,7 @@ public class GameManager : SingletonParent<GameManager>
         switch (_color)
         {
             case GameColors.BLUE:
-               mat = m_BlueMat;
+                mat = m_BlueMat;
                 break;
             case GameColors.RED:
                 mat = m_RedMat;
@@ -137,6 +169,7 @@ public class GameManager : SingletonParent<GameManager>
         }
 
         OnActiveColorChange?.Invoke(m_CurrentColor);
+        OnGameColorsChange?.Invoke(m_ActiveColor);
     }
     private void DetermineCurrentCubeMaterial(GameColors m_ActiveColor)
     {
@@ -182,7 +215,7 @@ public class GameManager : SingletonParent<GameManager>
 
     private void ResetTimer()
     {
-       //reset CurrentTime
+        //reset CurrentTime
         CurrentTime = m_MaxTime;
 
         //Randomize the timer drop rate speed
@@ -208,9 +241,25 @@ public class GameManager : SingletonParent<GameManager>
         OnGameColorsChange?.Invoke(m_ActiveColor);
         DetermineCurrentColor(m_ActiveColor);
         DetermineCurrentCubeMaterial(m_ActiveColor);
-        
+
     }
 
+    private void HandlePlayerDeath()
+    {
+
+        OnPlayerDeath?.Invoke();
+        AudioManager.Instance.PlayDestructionFX();
+        StartCoroutine(ReStart());
+
+    }
+    private IEnumerator ReStart()
+    {
+        yield return new WaitForSeconds(m_RestartTime);
+        OnRestart?.Invoke();
+        Health = MaxHealth;
+        //send score to leader board
+        TotalScore = 0;
+    }
 }
 public enum GameColors
 {

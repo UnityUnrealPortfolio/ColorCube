@@ -14,6 +14,18 @@ public class AudioManager : SingletonParent<AudioManager>
         base.Awake();
         DontDestroyOnLoad(gameObject);
     }
+    private void Start()
+    {
+        Debug.Log("Start AudioManager");
+        
+    }
+
+    public void PlayDestructionFX()
+    {
+        Debug.Log("Inside Playe Destruction FX");
+        m_AudioSource.PlayOneShot(m_CubeDestructionFx);
+    }
+
     public void PlayPickupFX()
     {
         m_AudioSource.PlayOneShot(m_PickupFx);
@@ -25,9 +37,5 @@ public class AudioManager : SingletonParent<AudioManager>
         m_AudioSource.PlayOneShot(m_RejectFX);
 
     }
-    public void PlayDestructionFx()
-    {
-        m_AudioSource.PlayOneShot(m_CubeDestructionFx);
 
-    }
 }

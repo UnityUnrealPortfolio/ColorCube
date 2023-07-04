@@ -13,6 +13,7 @@ public class PoolManager : SingletonParent<PoolManager>
         InitializePool();
     }
 
+
     public GameObject GetPooledItem(string _tag)
     {
         foreach (var item in poolItemsList)
@@ -24,7 +25,7 @@ public class PoolManager : SingletonParent<PoolManager>
         }
         return null;
     }
-    private void InitializePool()
+    public void InitializePool()
     {
         foreach (var poolItem in poolItems)
         {
@@ -47,5 +48,13 @@ public class PoolManager : SingletonParent<PoolManager>
                 }
             }
         }
+
+      
+    }
+
+    private void InitializePickupActiveColor(GameColors _initialColor)
+    {
+        //iterate through every pooled item
+        //set their respective active color to whatever their mat
     }
 }

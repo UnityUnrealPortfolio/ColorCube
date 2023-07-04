@@ -32,7 +32,6 @@ public class PickupCollisionBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        
-        Debug.Log("Inside on collision enter");
         if (other.gameObject.CompareTag("pickup"))
         {
             var pickup = other.gameObject.GetComponent<PickupBehaviour>();
@@ -45,6 +44,7 @@ public class PickupCollisionBehaviour : MonoBehaviour
             else
             {
                 pickup.BounceOff();
+                GameManager.Instance.Health -= GameManager.Instance.HealthDropAmount;
             }
         }
     }

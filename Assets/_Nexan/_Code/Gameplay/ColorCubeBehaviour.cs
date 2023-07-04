@@ -13,7 +13,7 @@ public class ColorCubeBehaviour : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnCubeMaterialChange += HandleActiveMaterialChange;
-       
+   
     }
 
 

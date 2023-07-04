@@ -11,21 +11,20 @@ using static UnityEngine.Rendering.DebugUI;
 public class TimerColorSetter : MonoBehaviour
 {
     [SerializeField] Image m_TimerBar;
-    private void Awake()
+    private void Start()
     {
         GameManager.Instance.OnActiveColorChange += HandleActiveColorChange;
-        GameManager.Instance.OnTimerChange += HandleTimerValueChange;
-        
+        GameManager.Instance.OnTimerChange += HandleTimerValueChange;     
     }
 
     private void HandleTimerValueChange(float _Value)
-    {
+    {;
+        
         m_TimerBar.fillAmount = _Value;
     }
 
     private void HandleActiveColorChange(Color _color)
     {
-        
         m_TimerBar.color = _color;
     }
 

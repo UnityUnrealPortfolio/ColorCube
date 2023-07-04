@@ -15,7 +15,6 @@ public class PickupBehaviour : MonoBehaviour
     private void Awake()
     {
         m_renderer = GetComponent<MeshRenderer>();
-
     }
     internal void SetFallSpeed(float v)
     {
@@ -64,10 +63,11 @@ public class PickupBehaviour : MonoBehaviour
 
     public void HandleDestruction()
     {
-        Debug.Log("Inside Handle Destruction");
+      
         AudioManager.Instance.PlayPickupFX();
         var fx = Instantiate(m_ActiveFxPrefab, transform.position, Quaternion.identity);
         Destroy(fx, 2f);//ToDo:Magic Numbers
+        gameObject.SetActive(false);
     }
 
 

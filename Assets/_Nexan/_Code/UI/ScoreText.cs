@@ -11,7 +11,13 @@ public class ScoreText : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnScoreChange += HandleScoreChange;
+        GameManager.Instance.OnActiveColorChange += HandleGameColorChange;
         m_ScoreText.text = "00";
+    }
+
+    private void HandleGameColorChange(Color obj)
+    {
+        m_ScoreText.faceColor = obj;
     }
 
     private void HandleScoreChange(int _score)
