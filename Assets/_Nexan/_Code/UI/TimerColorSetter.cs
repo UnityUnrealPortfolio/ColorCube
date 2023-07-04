@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
 /// Sets the color of the timer meter to whatever the active cube color is
@@ -10,15 +11,24 @@ using UnityEngine.UI;
 public class TimerColorSetter : MonoBehaviour
 {
     [SerializeField] Image m_TimerBar;
-    private void Start()
+    private void Awake()
     {
+        GameManager.Instance.OnActiveColorChange += HandleActiveColorChange;
+        GameManager.Instance.OnTimerChange += HandleTimerValueChange;
         
     }
 
-    private void HandleTimerValueUpdate(float _Value)
+    private void HandleTimerValueChange(float _Value)
     {
         m_TimerBar.fillAmount = _Value;
     }
+
+    private void HandleActiveColorChange(Color _color)
+    {
+        
+        m_TimerBar.color = _color;
+    }
+
 
     private void HandleTimerReset(Color color)
     {

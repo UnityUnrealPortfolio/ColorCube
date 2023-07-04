@@ -1924,6 +1924,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4774271610219584354, guid: ee4efaff533e489469c1ffafca69bb87, type: 3}
+--- !u!23 &1346431472 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1917589292224567058, guid: ee4efaff533e489469c1ffafca69bb87,
+    type: 3}
+  m_PrefabInstance: {fileID: 1540516942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1346431474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346431469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63311ddea5712f439a5301f3b4178f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Renderer: {fileID: 1346431472}
+  cubeAnimator: {fileID: 1540516946}
 --- !u!1 &1427578814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,6 +2215,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c599715dd40574d91ed9315465e94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ActiveColor: 3
+  m_CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  m_CurrentPickUpMaterial: {fileID: 0}
+  m_CurrentCubeMaterial: {fileID: 0}
+  m_RedMat: {fileID: 2100000, guid: 665dd649bf66ed74aa60232c064b9c2b, type: 2}
+  m_GreenMat: {fileID: 2100000, guid: b5f575cc0a5b3e5448b7a8ae13a69872, type: 2}
+  m_BlueMat: {fileID: 2100000, guid: 9f69d99391787414694be664d12a6c50, type: 2}
+  m_YellowMat: {fileID: 2100000, guid: 7621c02d5b615ac44b13646334b5557e, type: 2}
+  m_RedCubeMat: {fileID: 2100000, guid: eccc7d2bb54c1cd43910337531825e33, type: 2}
+  m_GreenCubeMat: {fileID: 2100000, guid: a93801c887d4bd44698bb911574e543e, type: 2}
+  m_BlueCubeMat: {fileID: 2100000, guid: b15bb4afc4791914587c3334007a1a0a, type: 2}
+  m_YellowCubeMat: {fileID: 2100000, guid: 184acb55f00bfef45af5cd4564ae3b55, type: 2}
+  m_RedColor: {r: 1, g: 0.1254902, b: 0, a: 1}
+  m_GreenColor: {r: 0, g: 1, b: 0.19607845, a: 1}
+  m_BlueColor: {r: 0, g: 0.24705884, b: 1, a: 1}
+  m_YellowColor: {r: 1, g: 0.9686275, b: 0, a: 1}
+  m_MaxTime: 1
+  m_timeDropRate: 0.1
+  m_MinDropRate: 0.05
+  m_MaxDropRate: 0.2
 --- !u!4 &1502801448
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,18 +2518,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1540516942}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1540516945
-MonoBehaviour:
+--- !u!95 &1540516946
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540516944}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63311ddea5712f439a5301f3b4178f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6970e4641fab7f248a537d40655611c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1795440652
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63311ddea5712f439a5301f3b4178f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Renderer: {fileID: 0}
+  cubeAnimator: {fileID: 0}
 --- !u!4 &3745622628150009540
 Transform:
   m_ObjectHideFlags: 0

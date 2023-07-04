@@ -28,6 +28,8 @@ public class PickupSpawner : MonoBehaviour
         //set a random fall speed
         spawnedPickup.GetComponent<Rigidbody>().isKinematic = true;
         spawnedPickup.GetComponent<PickupBehaviour>().SetFallSpeed(Random.Range(m_minFallSpeed,m_maxFallSpeed));
+        spawnedPickup.GetComponent<PickupBehaviour>().SetActiveMaterial(GameManager.Instance.GetRandomMaterial());
+
     }
 
 
