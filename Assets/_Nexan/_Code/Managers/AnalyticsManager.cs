@@ -44,7 +44,7 @@ public class AnalyticsManager : SingletonParent<AnalyticsManager>
             {"scoreatdeath",_score}
         };
 
-        AnalyticsService.Instance.CustomData("visithome", scoreAtDeathData);
+        AnalyticsService.Instance.CustomData("playerdeath", scoreAtDeathData);
         AnalyticsService.Instance.Flush();
     }
 }

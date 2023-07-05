@@ -8,6 +8,7 @@ using UnityEngine;
 public class RemoteConfigsManager : SingletonParent<RemoteConfigsManager>
 {
     public float retrievedHealthDrop;
+    public float retrievedPickupSpawnRate;
     public struct UserAttributes
     {
 
@@ -28,6 +29,8 @@ public class RemoteConfigsManager : SingletonParent<RemoteConfigsManager>
         RuntimeConfig runtimeConfig = await RemoteConfigService.Instance.FetchConfigsAsync(new UserAttributes(), new AppAttributes());
 
         retrievedHealthDrop = runtimeConfig.GetFloat("healthdrop");
+        retrievedPickupSpawnRate = runtimeConfig.GetFloat("pickupspawnrate");
         GameManager.Instance.SetHealthDrop(retrievedHealthDrop);
+        GameManager.Instance.SetPickupSpawnRate(retrievedPickupSpawnRate);
     }
 }

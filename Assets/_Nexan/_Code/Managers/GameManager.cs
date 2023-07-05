@@ -80,6 +80,18 @@ public class GameManager : SingletonParent<GameManager>
         }
     }
 
+    //Spawn related fields and props
+    [SerializeField] float m_PickupSpawnRate;
+    public float PickupSpawnRate
+    {
+        get => m_PickupSpawnRate;
+        private set
+        {
+            m_PickupSpawnRate = value;
+            OnPickupSpawnRateChange?.Invoke(m_PickupSpawnRate);
+
+        }
+    }
 
     #endregion
 
@@ -93,7 +105,7 @@ public class GameManager : SingletonParent<GameManager>
     public event Action<float> OnHealthChange;
     public event Action OnPlayerDeath;
     public event Action OnRestart;
-
+    public event Action<float> OnPickupSpawnRateChange;
     //public events for timer changes
     public event Action<float> OnTimerChange;
 
@@ -268,6 +280,11 @@ public class GameManager : SingletonParent<GameManager>
     internal void SetHealthDrop(float retrievedHealthDrop)
     {
        m_HealthDropAmount = retrievedHealthDrop;
+    }
+
+    internal void SetPickupSpawnRate(float retrievedPickupSpawnRate)
+    {
+        PickupSpawnRate = retrievedPickupSpawnRate;
     }
 }
 public enum GameColors

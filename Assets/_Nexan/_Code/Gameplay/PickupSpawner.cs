@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupSpawner : MonoBehaviour
+public class PickupSpawner : SingletonParent<PickupSpawner>
 {
     public string[] m_PickupsTags;
     public float m_LeftSpawnExtent,m_RightSpawnExtent;
     [Range(5f,15f)] public float m_minFallSpeed,m_maxFallSpeed;
     public float spawnRate, spawnInterval;
 
-  
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
+        GameManager.Instance.OnPickupSpawnRateChange += HandlePickupSpawnRateChange;
+        StartSpawningPickups();
+    }
+
+    private void HandlePickupSpawnRateChange(float obj)
+    {
+        CancelInvoke();
+        spawnRate = obj;
+        StartSpawningPickups();
        
+    }
+
+    public void StartSpawningPickups()
+    {
         InvokeRepeating("SpawnRandomPickups", spawnInterval, spawnRate);//ToDo: magic numbers!
     }
     private void SpawnRandomPickups()
