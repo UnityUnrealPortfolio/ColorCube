@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class SceneController : SingletonParent<SceneController>
 {
-   public void HandleLearnButton()
+    protected override void Awake()
+    {
+        base.Awake();
+        
+    }
+    public void HandleLearnButton()
     {
         AnalyticsManager.Instance.SendVisitHomePageEvent();
         Application.OpenURL("https://Nexan.org");

@@ -38,6 +38,8 @@ public class AnalyticsManager : SingletonParent<AnalyticsManager>
 
     public void SendScoreAtDeathEvent(int _score)
     {
+        if(NetworkManager.IsInternetAvailable(HandleNetworkConnect) ==false)
+            return;
         
         Dictionary<string, object> scoreAtDeathData = new Dictionary<string, object>()
         {
@@ -46,6 +48,10 @@ public class AnalyticsManager : SingletonParent<AnalyticsManager>
 
         AnalyticsService.Instance.CustomData("playerdeath", scoreAtDeathData);
         AnalyticsService.Instance.Flush();
+    }
+    private void HandleNetworkConnect(string _response)
+    {
+
     }
 }
 

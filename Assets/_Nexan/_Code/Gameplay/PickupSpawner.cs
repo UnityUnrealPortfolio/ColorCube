@@ -12,7 +12,7 @@ public class PickupSpawner : SingletonParent<PickupSpawner>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+       
     }
     private void Start()
     {
@@ -30,7 +30,7 @@ public class PickupSpawner : SingletonParent<PickupSpawner>
 
     public void StartSpawningPickups()
     {
-        InvokeRepeating("SpawnRandomPickups", spawnInterval, spawnRate);//ToDo: magic numbers!
+        InvokeRepeating("SpawnRandomPickups", spawnInterval, GameManager.Instance.PickupSpawnRate);//ToDo: magic numbers!
     }
     private void SpawnRandomPickups()
     {

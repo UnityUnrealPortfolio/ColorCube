@@ -22,6 +22,11 @@ public class GameManager : SingletonParent<GameManager>
     [SerializeField] float m_timeDropRate;
     [SerializeField] float m_MinDropRate, m_MaxDropRate;
     [SerializeField] float m_RestartTime;
+
+    [Header("Pickup Spawner Variables")]
+    [SerializeField] float m_NormalSpawnRate;
+    [SerializeField] float m_SpawnRate;
+    [SerializeField] float m_SpawnRateDrop;
     #endregion
 
     #region Private Fields
@@ -71,6 +76,7 @@ public class GameManager : SingletonParent<GameManager>
         get => m_Health;
         set
         {
+           
             m_Health = value;
             if (m_Health <= 0)
             {
@@ -119,9 +125,6 @@ public class GameManager : SingletonParent<GameManager>
         base.Awake();
         m_PickUpMatArray = new Material[] { m_RedMat, m_GreenMat, m_BlueMat, m_YellowMat };
         m_CubeMatArray = new Material[] { m_RedCubeMat, m_YellowCubeMat, m_GreenCubeMat, m_BlueCubeMat };
-        CurrentTime = m_MaxTime;
-        Health = MaxHealth;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -129,7 +132,11 @@ public class GameManager : SingletonParent<GameManager>
         DetermineCurrentColor(m_ActiveColor);
         DetermineCurrentPickUpMaterial(m_ActiveColor);
         DetermineCurrentCubeMaterial(m_ActiveColor);
-        
+        CurrentTime = m_MaxTime;
+        Health = MaxHealth;
+        PickupSpawnRate = m_NormalSpawnRate;
+        StartCoroutine(RampUpPickupSpawnRate());
+
     }
 
     private void Update()
@@ -273,10 +280,20 @@ public class GameManager : SingletonParent<GameManager>
         yield return new WaitForSeconds(m_RestartTime);
         OnRestart?.Invoke();
         Health = MaxHealth;
+        PickupSpawnRate = m_NormalSpawnRate;//ToDo:may need to refactor this to a method
         
         TotalScore = 0;
     }
 
+    private IEnumerator RampUpPickupSpawnRate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(m_SpawnRate);
+            PickupSpawnRate -= m_SpawnRateDrop;
+        }
+        
+    }
     internal void SetHealthDrop(float retrievedHealthDrop)
     {
        m_HealthDropAmount = retrievedHealthDrop;

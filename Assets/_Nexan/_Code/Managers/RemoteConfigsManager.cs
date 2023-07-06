@@ -4,11 +4,15 @@ using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.RemoteConfig;
 using UnityEngine;
+using TMPro;
 
 public class RemoteConfigsManager : SingletonParent<RemoteConfigsManager>
 {
-    public float retrievedHealthDrop;
-    public float retrievedPickupSpawnRate;
+    public TMP_Text debugText;//ToDo:public for testing
+    private float retrievedHealthDrop;
+    private float retrievedPickupSpawnRate;
+
+    #region Attribute Structs For GameOverrides
     public struct UserAttributes
     {
 
@@ -16,7 +20,8 @@ public class RemoteConfigsManager : SingletonParent<RemoteConfigsManager>
     public struct AppAttributes
     {
 
-    }
+    } 
+    #endregion
     protected override void Awake()
     {
         base.Awake();
@@ -26,11 +31,24 @@ public class RemoteConfigsManager : SingletonParent<RemoteConfigsManager>
     {
         await UnityServices.InitializeAsync();
 
-        RuntimeConfig runtimeConfig = await RemoteConfigService.Instance.FetchConfigsAsync(new UserAttributes(), new AppAttributes());
+        //First performs an internet check before fetching remote configs
+        if(NetworkManager.IsInternetAvailable(HandleNetworkCheck))
+        {
 
-        retrievedHealthDrop = runtimeConfig.GetFloat("healthdrop");
-        retrievedPickupSpawnRate = runtimeConfig.GetFloat("pickupspawnrate");
-        GameManager.Instance.SetHealthDrop(retrievedHealthDrop);
-        GameManager.Instance.SetPickupSpawnRate(retrievedPickupSpawnRate);
+            RuntimeConfig runtimeConfig = await RemoteConfigService.Instance.FetchConfigsAsync(new UserAttributes(), new AppAttributes());
+
+            retrievedHealthDrop = runtimeConfig.GetFloat("healthdrop");
+            retrievedPickupSpawnRate = runtimeConfig.GetFloat("pickupspawnrate");
+
+            GameManager.Instance.SetHealthDrop(retrievedHealthDrop);
+            GameManager.Instance.SetPickupSpawnRate(retrievedPickupSpawnRate);
+        }
+
+        
+    }
+
+    private void HandleNetworkCheck(string _response)
+    {
+        //debugText.text = _response;
     }
 }

@@ -8,6 +8,7 @@ public class PoolManager : SingletonParent<PoolManager>
     public List<PoolItem> poolItems = new List<PoolItem>();
     [SerializeField]private List<Transform> poolItemsList;
 
+
     private void Start()
     {
         InitializePool();

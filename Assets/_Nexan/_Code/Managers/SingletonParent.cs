@@ -24,6 +24,6 @@ public class SingletonParent<T> : MonoBehaviour where T : SingletonParent<T>
         {
             instance = (T)this;
         }
-        
+        DontDestroyOnLoad(gameObject);
     }
 }

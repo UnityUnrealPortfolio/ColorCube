@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"74ab55a8-7a9e-44f7-8e76-f623f922ed03\"\r\n   
+  _rsKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a4715677-dfc4-421a-921e-4d34eecb6965\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"healthdrop\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 20.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"e1b8c706-8ce4-4dd3-9a87-6b3842d7f54b\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"99667a3a-9a4e-4999-9c69-d594219f34b7\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"pickupspawnrate\",\r\n      \"type\": \"float\",\r\n      \"value\":
     0.6\r\n    }\r\n  }\r\n]"
-  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"74ab55a8-7a9e-44f7-8e76-f623f922ed03\"\r\n   
+  _rsLastCachedKeyList: "[\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\": \"a4715677-dfc4-421a-921e-4d34eecb6965\"\r\n   
     },\r\n    \"rs\": {\r\n      \"key\": \"healthdrop\",\r\n      \"type\": \"float\",\r\n     
     \"value\": 20.0\r\n    }\r\n  },\r\n  {\r\n    \"metadata\": {\r\n      \"entityId\":
-    \"e1b8c706-8ce4-4dd3-9a87-6b3842d7f54b\"\r\n    },\r\n    \"rs\": {\r\n     
+    \"99667a3a-9a4e-4999-9c69-d594219f34b7\"\r\n    },\r\n    \"rs\": {\r\n     
     \"key\": \"pickupspawnrate\",\r\n      \"type\": \"float\",\r\n      \"value\":
     0.6\r\n    }\r\n  }\r\n]"
   _environments: "[\r\n  {\r\n    \"projectId\": \"84c5f66c-c244-4053-9e8e-ff291b152a50\",\r\n   

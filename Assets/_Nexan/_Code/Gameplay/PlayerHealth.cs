@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] GameObject m_DeathFX;
-    private void Start()
+    private void OnEnable()
     {
         GameManager.Instance.OnPlayerDeath += HandlePlayerDeath;
         GameManager.Instance.OnRestart += HandleRestart;
