@@ -20,4 +20,9 @@ public class SceneController : SingletonParent<SceneController>
     {
         SceneManager.LoadScene("Game");
     }
+
+    public void HandleBackButton()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
 }
